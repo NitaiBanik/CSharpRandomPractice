@@ -2,22 +2,18 @@
 
 namespace CSharpRandomPractice
 {
-    public enum Name
-    {
-        Nitai = 1,
-        Chandra = 2,
-        Banik = 3
-    }
-
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
 
-            var intName =(int) Name.Banik;
-            var enumName = (Name)intName;
+            var intName =(int)NameEnum.Banik;
+            var enumName = (NameEnum)intName;
             var stringName = enumName.ToString();
+
+            var str = "Chandra";
+            var toEnum = Enum.Parse(typeof(NameEnum), str);
         }
     }
 }

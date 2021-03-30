@@ -14,6 +14,9 @@ namespace CSharpRandomPractice
 
             var str = "Chandra";
             var toEnum = Enum.Parse(typeof(NameEnum), str);
+
+            var linq = new Linq();
+            linq.PracticeLinq();
         }
     }
 }

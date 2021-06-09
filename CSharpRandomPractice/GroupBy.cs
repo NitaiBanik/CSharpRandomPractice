@@ -16,6 +16,7 @@ namespace CSharpRandomPractice
         public void TestGroupBy()
         {
             var res = _studentList.GroupBy(s => s.Age);
+            var res2 = _studentList.ToLookup(s => s.Age);
         }
     }
 }

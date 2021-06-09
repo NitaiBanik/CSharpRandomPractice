@@ -7,9 +7,23 @@ namespace CSharpRandomPractice
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            var input = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(input * 2);
+            string testString = "NitaiBanik";
+            string partWithoutLength = testString.Substring(5);
+            string partWithLength = testString.Substring(5, 5);
+            Console.WriteLine(partWithoutLength);
+            Console.WriteLine(partWithLength);
+
+            int charIndex = testString.IndexOf('i');
+            int stringIndex = testString.IndexOf("it");
+            int charIndexAfter = testString.IndexOf('i',5);
+            int stringIndexAfter = testString.IndexOf("ii", 5);
+
+            Console.WriteLine(charIndex + " " + stringIndex + " " + charIndexAfter + " " + stringIndexAfter);
+
+            Console.WriteLine(testString.Remove(1));
+            Console.WriteLine(testString.Remove(1, 2));
+            Console.WriteLine(testString.Insert(5, " "));
+            Console.WriteLine(testString.Insert(0, "Mr. "));
 
             var dic = new Dictionary<string, string>
             {

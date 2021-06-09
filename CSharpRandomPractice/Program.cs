@@ -9,13 +9,21 @@ namespace CSharpRandomPractice
         {
             string testString = "NitaiBanik";
             string partWithoutLength = testString.Substring(5);
-            string partWithLength = testString.Substring(5, 5);
+            try
+            {
+                string partWithLength = testString.Substring(85, 5);
+                Console.WriteLine(partWithLength);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             Console.WriteLine(partWithoutLength);
-            Console.WriteLine(partWithLength);
 
             int charIndex = testString.IndexOf('i');
             int stringIndex = testString.IndexOf("it");
-            int charIndexAfter = testString.IndexOf('i',5);
+            int charIndexAfter = testString.IndexOf('i', 5);
             int stringIndexAfter = testString.IndexOf("ii", 5);
 
             Console.WriteLine(charIndex + " " + stringIndex + " " + charIndexAfter + " " + stringIndexAfter);
@@ -35,7 +43,7 @@ namespace CSharpRandomPractice
             var val2 = dic["e"];
 
 
-            var intName =(int)NameEnum.Banik;
+            var intName = (int)NameEnum.Banik;
             var enumName = (NameEnum)intName;
             var stringName = enumName.ToString();
 

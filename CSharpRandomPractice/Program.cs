@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSharpRandomPractice
 {
@@ -7,6 +8,20 @@ namespace CSharpRandomPractice
     {
         static void Main(string[] args)
         {
+            var slots = new Dictionary<DateTime, DateTime>();
+            slots.Add(DateTime.UtcNow.Date.Date + new TimeSpan(9, 0, 0), DateTime.UtcNow.Date.Date + new TimeSpan(9, 30, 0));
+            slots.Add(DateTime.UtcNow.Date.Date + new TimeSpan(10, 0, 0), DateTime.UtcNow.Date.Date + new TimeSpan(10, 30, 0));
+            slots.Add(DateTime.UtcNow.Date.Date + new TimeSpan(9, 30, 0), DateTime.UtcNow.Date.Date + new TimeSpan(9, 45, 0));
+            slots.Add(DateTime.UtcNow.Date.Date + new TimeSpan(11, 0, 0), DateTime.UtcNow.Date.Date + new TimeSpan(11, 45, 0));
+
+            slots = slots.OrderBy(x => x.Key.Date)
+                         .ThenBy(a => a.Key.Hour)
+                         .ToDictionary(a => a.Key, a => a.Value);
+
+            foreach (KeyValuePair<DateTime, DateTime> author in slots)
+            {
+                Console.WriteLine("Start Time : {0}, End Time: {1}", author.Key, author.Value);
+            }
             string testString = "NitaiBanik";
             string partWithoutLength = testString.Substring(5);
             try

@@ -1,22 +1,37 @@
-﻿namespace CSharpRandomPractice
+﻿using System;
+
+namespace CSharpRandomPractice
 {
     class Program
     {
-        delegate double Calculate(int x, int y);
-
         static void Main(string[] args)
         {
-            Calculate add = Calculator.AddNumbers;
-            System.Console.WriteLine(add(10,20));
+            Func<int, int, double> add = Calculator.AddNumbers;
+            Console.WriteLine(add(10, 20));
 
-            Calculate divide = Calculator.DivNumbers;
+            Func<int, int, double> divide = Calculator.DivNumbers;
 
-            System.Console.WriteLine(divide(10, 3));
+            Console.WriteLine(divide(10, 3));
+
+            Action<int, int> printSum = Calculator.PrintSum;
+            printSum(44, 44);
+
+            Predicate<int> isEven = Calculator.IsEven;
+            Console.WriteLine(isEven(5));
+
+
         }
     }
     public static class Calculator
     {
         public static double AddNumbers(int x, int y) => x + y;
         public static double DivNumbers(int x, int y) => x / y;
+
+        public static void PrintSum(int x, int y)
+        {
+            Console.WriteLine(x + y);
+        }
+
+        public static bool IsEven(int x) => x % 2 ==  0;
     }
 }

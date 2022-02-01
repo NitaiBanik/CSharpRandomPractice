@@ -6,32 +6,25 @@ namespace CSharpRandomPractice
     {
         static void Main(string[] args)
         {
-            Func<int, int, double> add = Calculator.AddNumbers;
-            Console.WriteLine(add(10, 20));
+            Print(AddNumbers, 5, 6);
+            Print(DivNumbers, 5, 6);
 
-            Func<int, int, double> divide = Calculator.DivNumbers;
-
-            Console.WriteLine(divide(10, 3));
-
-            Action<int, int> printSum = Calculator.PrintSum;
-            printSum(44, 44);
-
-            Predicate<int> isEven = Calculator.IsEven;
-            Console.WriteLine(isEven(5));
-
-
+            Action ac = Hi;
+            ac();
         }
-    }
-    public static class Calculator
-    {
         public static double AddNumbers(int x, int y) => x + y;
-        public static double DivNumbers(int x, int y) => x / y;
+        public static double DivNumbers(int x, int y) => (double)x / y;
 
-        public static void PrintSum(int x, int y)
+        public static void Print(Func<int, int, double> del, int x, int y)
         {
-            Console.WriteLine(x + y);
+            Console.WriteLine(del(x, y));
         }
 
-        public static bool IsEven(int x) => x % 2 ==  0;
+        public static void Hi()
+        {
+            Console.WriteLine("Hi");
+        }
     }
+
+
 }
